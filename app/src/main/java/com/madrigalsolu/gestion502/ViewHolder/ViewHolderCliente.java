@@ -47,28 +47,25 @@ public class ViewHolderCliente extends RecyclerView.ViewHolder {
     }
     public void setearDatosCliente(Context context, String id_cliente, String uid_cliente, String nombres,
                                    String apellidos, String correo, String telefono, String dni, String direccion){
-        ImageView ivclientefotoI;
-        TextView tvidclienteI, tvuidclienteI, tvnombreI, tvapellidosI, tvcorreoI, tvdniI, tvtelefonoI, tvdireccionI;
+        TextView tvnombreI, tvapellidosI, tvtelefonoI;
 
-        ivclientefotoI=mview.findViewById(R.id.ivclientefotoI);
-        tvidclienteI=mview.findViewById(R.id.tvidclienteI);
-        tvuidclienteI=mview.findViewById(R.id.tvuidclienteI);
         tvnombreI=mview.findViewById(R.id.tvnombresI);
         tvapellidosI=mview.findViewById(R.id.tvapellidosI);
-        tvcorreoI=mview.findViewById(R.id.tvcorreoI);
-        tvdniI=mview.findViewById(R.id.tvdniI);
         tvtelefonoI=mview.findViewById(R.id.tvtelefonoI);
-        tvdireccionI=mview.findViewById(R.id.tvdireccionI);
 
-        tvidclienteI.setText(id_cliente);
-        tvuidclienteI.setText(uid_cliente);
-        tvnombreI.setText(nombres);
-        tvapellidosI.setText(apellidos);
-        tvcorreoI.setText(correo);
-        tvdniI.setText(dni);
-        tvtelefonoI.setText(telefono);
-        tvdireccionI.setText(direccion);
+        // En la lista SOLO se muestran: nombre, apellido y celular
+        if (tvnombreI != null) tvnombreI.setText(nombres != null ? nombres : "");
+        if (tvapellidosI != null) tvapellidosI.setText(apellidos != null ? apellidos : "");
+        if (tvtelefonoI != null) tvtelefonoI.setText(telefono != null ? telefono : "");
+    }
 
+    public void setearDatosResumidos(String nombres, String apellidos, String telefono){
+        TextView tvnombreI = mview.findViewById(R.id.tvnombresI);
+        TextView tvapellidosI = mview.findViewById(R.id.tvapellidosI);
+        TextView tvtelefonoI = mview.findViewById(R.id.tvtelefonoI);
+        if (tvnombreI != null) tvnombreI.setText(nombres != null ? nombres : "");
+        if (tvapellidosI != null) tvapellidosI.setText(apellidos != null ? apellidos : "");
+        if (tvtelefonoI != null) tvtelefonoI.setText(telefono != null ? telefono : "");
     }
 
 }

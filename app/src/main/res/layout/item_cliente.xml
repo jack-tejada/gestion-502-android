@@ -1,79 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="0.2dp"
-    app:cardCornerRadius="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp"
     android:clickable="true"
     android:focusable="true"
-    android:layout_height="match_parent">
+    android:foreground="?attr/selectableItemBackground">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
-        <ImageView
-            android:id="@+id/ivclientefotoI"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:src="@drawable/bienv_1"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="5dp">
-                <TextView
-                    android:id="@+id/tvidclienteI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="id_cliente"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvuidclienteI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="uid_cliente"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvnombresI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nombres"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvapellidosI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Apellidos"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvcorreoI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Correo"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvtelefonoI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Telefono"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvdniI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="DNI"
-                    android:layout_marginTop="5dp"/>
-                <TextView
-                    android:id="@+id/tvdireccionI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Direccion"
-                    android:layout_marginTop="5dp"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
+        android:padding="12dp"
+        android:gravity="center">
+
+        <!-- Foto circular sobre fondo azul, como en el diseño -->
+        <FrameLayout
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_avatar"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/ivclientefotoI"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:layout_gravity="center"
+                android:src="@drawable/cliente"
+                android:scaleType="centerCrop"
+                android:contentDescription="Foto cliente" />
+        </FrameLayout>
+
+        <!-- SOLO se muestran estos tres datos en la lista -->
+        <TextView
+            android:id="@+id/tvnombresI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Nombres"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/tvapellidosI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apellidos"
+            android:textSize="14sp"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/tvtelefonoI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Celular"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:gravity="center" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>

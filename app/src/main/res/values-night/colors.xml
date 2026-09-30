@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Borde y etiqueta de los campos del formulario en modo oscuro: blancos para contraste -->
+    <color name="field_stroke">#FFFFFF</color>
+    <color name="field_hint">#E0E0E0</color>
+</resources>

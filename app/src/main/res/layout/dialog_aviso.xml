@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_aviso"
+    android:padding="24dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvDialogTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aviso de Aplicativo"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tvDialogMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Mensaje"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:gravity="center" />
+
+    <!-- Icono grande del dialog: imagen real según el caso (alarm / checked / trash) -->
+    <ImageView
+        android:id="@+id/ivDialogIcono"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center"
+        android:src="@drawable/checked"
+        android:contentDescription="Icono de aviso" />
+
+    <!-- Animación Lottie (éxito / eliminado): se muestra en lugar de la imagen cuando hay animación -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieDialogIcono"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
+    <Button
+        android:id="@+id/btnDialogEntendido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center"
+        android:minWidth="140dp"
+        android:text="Entiendo"
+        android:textAllCaps="false" />
+
+    <!-- Opciones Editar / Eliminar (solo visible en modo opciones, click prolongado) -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutOpciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btnOpcionEditar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@drawable/editar"
+                android:contentDescription="Editar" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Editar"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btnOpcionEliminar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@drawable/deletefile"
+                android:contentDescription="Eliminar" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Eliminar"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

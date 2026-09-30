@@ -15,6 +15,7 @@
         android:padding="30dp"
         android:layout_marginTop="25dp">
         <TextView
+            android:id="@+id/tvTituloForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/registrar_cli"
@@ -47,13 +48,18 @@
             android:layout_gravity="center_horizontal"
             app:lottie_autoPlay="true"
             app:lottie_imageAssetsFolder="assets"
-            app:lottie_fileName="plataforma.json"
+            app:lottie_fileName="businessplan.json"
             app:lottie_loop="true" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNombres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            app:hintTextColor="@color/field_stroke"
+            app:boxStrokeColor="@color/field_stroke"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -61,14 +67,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombres"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="30"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="@color/field_hint"
                 android:drawableStart="@drawable/ico_profile"
+                android:drawableTint="@color/field_stroke"
                 android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilApellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:hintTextColor="@color/field_stroke"
+            app:boxStrokeColor="@color/field_stroke"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -76,15 +92,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Apellidos"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="30"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="@color/field_hint"
                 android:drawableStart="@drawable/ico_profile"
+                android:drawableTint="@color/field_stroke"
                 android:drawablePadding="10dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:hintTextColor="@color/field_stroke"
+            app:boxStrokeColor="@color/field_stroke"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -93,54 +119,90 @@
                 android:layout_height="wrap_content"
                 android:hint="Correo"
                 android:inputType="textEmailAddress"
+                android:maxLength="50"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="@color/field_hint"
                 android:drawableStart="@drawable/ico_mail"
+                android:drawableTint="@color/field_stroke"
                 android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:hintTextColor="@color/field_stroke"
+            app:boxStrokeColor="@color/field_stroke"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="8"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDni"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="DNI"
+                android:hint="DNI (8 dígitos)"
                 android:inputType="number"
+                android:maxLength="8"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="@color/field_hint"
                 android:drawableStart="@drawable/ico_dni"
+                android:drawableTint="@color/field_stroke"
                 android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:hintTextColor="@color/field_stroke"
+            app:boxStrokeColor="@color/field_stroke"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="9"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Telefono"
+                android:hint="Celular (9 dígitos)"
                 android:inputType="phone"
+                android:maxLength="9"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="@color/field_hint"
                 android:drawableStart="@drawable/ico_mobile"
+                android:drawableTint="@color/field_stroke"
                 android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Ubicación: desplegable con los departamentos del Perú -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDepartamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            app:hintTextColor="@color/field_stroke"
+            app:boxStrokeColor="@color/field_stroke"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDireccion"
+            <AutoCompleteTextView
+                android:id="@+id/actvDepartamento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Direccion"
+                android:hint="Departamento"
+                android:inputType="none"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="@color/field_hint"
                 android:drawableStart="@drawable/ico_direccion"
+                android:drawableTint="@color/field_stroke"
                 android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
