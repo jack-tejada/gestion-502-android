@@ -188,7 +188,10 @@ public class ListaClienteActivity extends AppCompatActivity {
     }
 
     private void mostrarDialogEliminar(Cliente cliente) {
-        // Confirmación blanca CANCELAR / CONFIRMAR, luego éxito azul auto (3s)
+        if (cliente.getId_cliente() == null || cliente.getId_cliente().isEmpty()) {
+            Toast.makeText(this, "No se puede eliminar: registro sin ID", Toast.LENGTH_SHORT).show();
+            return;
+        }
         DialogAviso.mostrarConfirmacion(this,
                 "¿Está seguro de Eliminar el Cliente?",
                 () -> refClientes.child(cliente.getId_cliente()).removeValue()

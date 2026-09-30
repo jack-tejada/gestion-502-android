@@ -40,6 +40,7 @@ public class AgregarClienteActivity extends AppCompatActivity {
 
     boolean modoEdicion = false;
     String idClienteEditar = null;
+    boolean guardando = false; // evita doble tap en Guardar (doble dialog / doble registro)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,7 +226,13 @@ public class AgregarClienteActivity extends AppCompatActivity {
     }
 
     private void guardarCliente() {
+        if (isFinishing() || isDestroyed()) return;
+        if (guardando) return; // ya hay un guardado en curso
+        guardando = true;
+        btnguardarcliente.setEnabled(false);
         if (firebaseUser == null) {
+            guardando = false;
+            btnguardarcliente.setEnabled(true);
             Toast.makeText(this, "Inicia sesión para registrar un cliente", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -243,19 +250,27 @@ public class AgregarClienteActivity extends AppCompatActivity {
             Cliente cliente = new Cliente(idClienteEditar, uid, nombres, apellidos, correo, telefono, dni, direccion);
             clientes.child(idClienteEditar).setValue(cliente)
                     .addOnSuccessListener(unused -> mostrarDialogExitoAuto("Cliente Actualizado Correctamente", true))
-                    .addOnFailureListener(error ->
-                            dialogValidacion("No se pudo actualizar el cliente. Intente de nuevo."));
+                    .addOnFailureListener(error -> {
+                        guardando = false;
+                        btnguardarcliente.setEnabled(true);
+                        dialogValidacion("No se pudo actualizar el cliente. Intente de nuevo.");
+                    });
         } else {
             String id_cliente = clientes.push().getKey();
             if (id_cliente == null) {
+                guardando = false;
+                btnguardarcliente.setEnabled(true);
                 dialogValidacion("No se pudo generar el ID del cliente. Intente de nuevo.");
                 return;
             }
             Cliente cliente = new Cliente(id_cliente, uid, nombres, apellidos, correo, telefono, dni, direccion);
             clientes.child(id_cliente).setValue(cliente)
                     .addOnSuccessListener(unused -> mostrarDialogExitoAuto("Cliente Agregado Correctamente", false))
-                    .addOnFailureListener(error ->
-                            dialogValidacion("No se pudo registrar el cliente. Intente de nuevo."));
+                    .addOnFailureListener(error -> {
+                        guardando = false;
+                        btnguardarcliente.setEnabled(true);
+                        dialogValidacion("No se pudo registrar el cliente. Intente de nuevo.");
+                    });
         }
     }
 
