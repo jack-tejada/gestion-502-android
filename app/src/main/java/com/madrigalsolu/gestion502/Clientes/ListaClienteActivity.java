@@ -30,6 +30,7 @@ import com.madrigalsolu.gestion502.Clases.Cliente;
 import com.madrigalsolu.gestion502.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListaClienteActivity extends AppCompatActivity {
@@ -119,7 +120,8 @@ public class ListaClienteActivity extends AppCompatActivity {
     }
 
     private void escucharClientes() {
-        refClientes.orderByChild("nombres").addValueEventListener(new ValueEventListener() {
+        // orderByKey: las claves push son cronológicas; al invertir queda el más nuevo primero
+        refClientes.orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listaTotal.clear();
@@ -127,6 +129,7 @@ public class ListaClienteActivity extends AppCompatActivity {
                     Cliente c = ds.getValue(Cliente.class);
                     if (c != null) listaTotal.add(c);
                 }
+                Collections.reverse(listaTotal); // el recién registrado pasa al inicio
                 // Reaplicar el filtro actual cada vez que cambian los datos
                 String texto = etBuscarCliente != null ? etBuscarCliente.getText().toString() : "";
                 filtrarClientes(texto);
