@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.madrigalsolu.gestion502.R;
 
 /**
@@ -82,13 +83,47 @@ public class DialogAviso {
         }
     }
 
-    /** Solo imagen (validaciones, opciones, éxitos): sin Lottie en dialogs. */
+    /** Solo imagen (opciones): oculta la animación. */
     private static void mostrarSoloImagen(View layout, Icono icono) {
         try {
+            View anim = layout.findViewById(R.id.lottieDialogIcono);
             View iv = layout.findViewById(R.id.ivDialogIcono);
+            if (anim != null) anim.setVisibility(View.GONE);
             if (iv != null) iv.setVisibility(View.VISIBLE);
             aplicarIcono(layout, icono);
         } catch (Exception ignored) {
+        }
+    }
+
+    /** Animación Lottie con caída a imagen si algo falla (requiere Lottie 6.x). */
+    private static void mostrarAnimacion(View layout, String lottieAsset, Icono iconoFallback) {
+        ImageView iv = layout.findViewById(R.id.ivDialogIcono);
+        LottieAnimationView anim = layout.findViewById(R.id.lottieDialogIcono);
+        boolean animOk = false;
+        if (lottieAsset != null && !lottieAsset.isEmpty() && iv != null && anim != null) {
+            try {
+                iv.setVisibility(View.GONE);
+                anim.setVisibility(View.VISIBLE);
+                anim.setAnimation(lottieAsset);
+                anim.playAnimation();
+                animOk = true;
+            } catch (Exception ignored) {
+                animOk = false;
+            }
+        }
+        if (!animOk) {
+            if (anim != null) {
+                try {
+                    anim.cancelAnimation();
+                } catch (Exception ignored) {
+                }
+                anim.setVisibility(View.GONE);
+            }
+            if (iv != null) iv.setVisibility(View.VISIBLE);
+            try {
+                aplicarIcono(layout, iconoFallback);
+            } catch (Exception ignored) {
+            }
         }
     }
 
@@ -107,14 +142,14 @@ public class DialogAviso {
         return dialog;
     }
 
-    /** Dialog informativo con botón "Entiendo" (validaciones por campo, imagen de alerta). */
+    /** Dialog informativo con botón "Entiendo" (validaciones: animación alert.json). */
     public static void mostrarInfo(Context context, String mensaje, Icono icono) {
         if (!contextoValido(context)) return;
         try {
             View layout = LayoutInflater.from(context).inflate(R.layout.dialog_aviso, null);
             ((TextView) layout.findViewById(R.id.tvDialogTitulo)).setText("Aviso de Aplicativo");
             ((TextView) layout.findViewById(R.id.tvDialogMensaje)).setText(mensaje);
-            mostrarSoloImagen(layout, icono);
+            mostrarAnimacion(layout, "alert.json", icono);
             layout.findViewById(R.id.layoutOpciones).setVisibility(View.GONE);
             Button btn = layout.findViewById(R.id.btnDialogEntendido);
             btn.setVisibility(View.VISIBLE);
@@ -129,10 +164,10 @@ public class DialogAviso {
 
     /**
      * Dialog de éxito SIN botón: se cierra solo a los 3 segundos (máx. 5s).
-     * Usa imagen estática (sin Lottie en dialogs para máxima estabilidad).
+     * Muestra la animación Lottie indicada (requiere Lottie 6.x); si falla, la imagen.
      */
     public static void mostrarExitoAuto(Context context, String mensaje,
-                                        Icono icono, Runnable alCerrar) {
+                                        String lottieAsset, Icono iconoFallback, Runnable alCerrar) {
         if (!contextoValido(context)) {
             if (alCerrar != null) {
                 try {
@@ -146,7 +181,7 @@ public class DialogAviso {
             View layout = LayoutInflater.from(context).inflate(R.layout.dialog_aviso, null);
             ((TextView) layout.findViewById(R.id.tvDialogTitulo)).setText("Aviso de Aplicativo");
             ((TextView) layout.findViewById(R.id.tvDialogMensaje)).setText(mensaje);
-            mostrarSoloImagen(layout, icono);
+            mostrarAnimacion(layout, lottieAsset, iconoFallback);
             layout.findViewById(R.id.layoutOpciones).setVisibility(View.GONE);
             layout.findViewById(R.id.btnDialogEntendido).setVisibility(View.GONE);
             Dialog dialog = crearBase(context, layout);

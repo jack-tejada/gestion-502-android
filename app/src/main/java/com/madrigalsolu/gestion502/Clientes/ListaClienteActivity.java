@@ -201,6 +201,7 @@ public class ListaClienteActivity extends AppCompatActivity {
                         .addOnSuccessListener(a -> DialogAviso.mostrarExitoAuto(
                                 ListaClienteActivity.this,
                                 "Cliente Eliminado Correctamente",
+                                "deleteanimation.json",
                                 DialogAviso.Icono.PAPELERA_NARANJA, null))
                         .addOnFailureListener(e -> Toast.makeText(this,
                                 "No se pudo eliminar", Toast.LENGTH_SHORT).show()));

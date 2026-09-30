@@ -279,6 +279,7 @@ public class AgregarClienteActivity extends AppCompatActivity {
      */
     private void mostrarDialogExitoAuto(String mensaje, boolean esActualizacion) {
         DialogAviso.mostrarExitoAuto(this, mensaje,
+                esActualizacion ? "successaniicon.json" : "success.json",
                 esActualizacion ? DialogAviso.Icono.CHECK_AMARILLO : DialogAviso.Icono.CHECK_BLANCO,
                 this::finish);
     }

@@ -43,6 +43,17 @@
         android:src="@drawable/checked"
         android:contentDescription="Icono de aviso" />
 
+    <!-- Animación Lottie (requiere librería Lottie 6.x): se muestra en lugar de la imagen -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieDialogIcono"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
     <Button
         android:id="@+id/btnDialogEntendido"
         android:layout_width="wrap_content"

@@ -36,7 +36,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     //libreria para las animaciones
-    implementation 'com.airbnb.android:lottie:3.0.1'
+    implementation 'com.airbnb.android:lottie:6.5.0'
     //firebase analisis -----
     //Analitys de firebase
     implementation 'com.google.firebase:firebase-analytics:21.3.0'
