@@ -275,11 +275,10 @@ public class AgregarClienteActivity extends AppCompatActivity {
     }
 
     /**
-     * Dialog de éxito SIN botón de cierre: animación Lottie, se cierra solo a los 3 segundos.
+     * Dialog de éxito SIN botón de cierre: se cierra solo a los 3 segundos.
      */
     private void mostrarDialogExitoAuto(String mensaje, boolean esActualizacion) {
         DialogAviso.mostrarExitoAuto(this, mensaje,
-                esActualizacion ? "successaniicon.json" : "success.json",
                 esActualizacion ? DialogAviso.Icono.CHECK_AMARILLO : DialogAviso.Icono.CHECK_BLANCO,
                 this::finish);
     }
