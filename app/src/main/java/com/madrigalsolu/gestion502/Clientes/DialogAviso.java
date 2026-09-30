@@ -91,12 +91,12 @@ public class DialogAviso {
         return dialog;
     }
 
-    /** Dialog informativo con botón "Entiendo" (validaciones por campo). */
+    /** Dialog informativo con botón "Entiendo" (validaciones por campo, con animación de alerta). */
     public static void mostrarInfo(Context context, String mensaje, Icono icono) {
         View layout = LayoutInflater.from(context).inflate(R.layout.dialog_aviso, null);
         ((TextView) layout.findViewById(R.id.tvDialogTitulo)).setText("Aviso de Aplicativo");
         ((TextView) layout.findViewById(R.id.tvDialogMensaje)).setText(mensaje);
-        mostrarSoloImagen(layout, icono);
+        mostrarIconoOAnimacion(layout, "alert.json", icono);
         layout.findViewById(R.id.layoutOpciones).setVisibility(View.GONE);
         Button btn = layout.findViewById(R.id.btnDialogEntendido);
         btn.setVisibility(View.VISIBLE);
