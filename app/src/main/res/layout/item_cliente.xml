@@ -29,7 +29,7 @@
                 android:layout_width="92dp"
                 android:layout_height="92dp"
                 android:layout_gravity="center"
-                android:src="@drawable/cliente"
+                android:src="@drawable/perfil"
                 android:scaleType="centerCrop"
                 android:contentDescription="Foto cliente" />
         </FrameLayout>
